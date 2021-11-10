@@ -74,10 +74,10 @@ function resize(width, height) {
 	var canvas = document.getElementById("drawing-canvas");
 	if (width || height) {
 		if (width < 1) {
-			width = 32;
+			width = 800;
 		}
 		if (height < 1) {
-			height = 32;
+			height = 600;
 		};
 	} else {
 		var widthOpt = document.getElementById("width");
@@ -85,10 +85,10 @@ function resize(width, height) {
 		width = Number(widthOpt.value);
 		height = Number(heightOpt.value);
 		if (width < 1) {
-			width = 32;
+			width = 800;
 		}
 		if (height < 1) {
-			height = 32;
+			height = 600;
 		}
 	}
 	var url = location.href;
@@ -129,4 +129,16 @@ function loadImageFile() {
 			});
    	}
 	}
+}
+
+function saveImageFile() {
+	const canvas = document.getElementById("drawing-canvas");
+	var imgUrl = canvas.toDataURL("images/png");
+	
+	var a = document.createElement('a');
+   	a.href = imgUrl;
+   	a.download = "canvas.png";
+   	document.body.appendChild(a);
+   	a.click();
+	a.remove();
 }
