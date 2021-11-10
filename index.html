@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<script src="script.js"></script>
+		<link rel="stylesheet" href="style.css">
+		<link rel="icon" href="favicon.png">
+		<title>drawing station</title>
+	</head>
+	<body onload="draw()">
+		<div><canvas id="drawing-canvas" width="800" height="600"></canvas></div>
+		<div>
+			<div class="color-div">
+				<label for="color">Color</label>
+				<input type="color" id="color">
+			</div>
+			<div class="eraser-div">
+				<label for="eraser">Eraser?</label>
+				<input type="checkbox" id="eraser">
+			</div>
+			<div class="size-div">
+				<label for="size">Pen Size</label>
+				<input type="range" id="size" min="1" max="20">
+			</div>
+		</div>
+		<div>
+			<label for="width">Width: </label>
+			<input type="number" id="width" style="width:100px;">
+			<label for="height">Height: </label>
+			<input type="number" id="height" style="width:100px;">
+			<button onclick="resize()">Resize (reloads the page)</button>
+		</div>
+		<div>
+			<button onclick="loadImageFile()">Load File</button>
+		</div>
+	</body>
+</html>

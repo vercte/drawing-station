@@ -1,0 +1,39 @@
+body {
+	font-family: sans-serif
+}
+
+#drawing-canvas {
+	border: 2px black solid;
+	cursor: crosshair;
+	image-rendering: pixelated;
+}
+
+.eraser-div {
+	display: inline-block;
+	height: 50px;
+	margin-right: 10px;
+}
+
+.eraser-div label {
+	display: block;
+}
+
+.color-div {
+	display: inline-block;
+	height: 50px;
+	margin-right: 10px;
+}
+
+.color-div label {
+	display: block;
+}
+
+.size-div {
+	display: inline-block;
+	height: 50px;
+	margin-right: 10px;
+}
+
+.size-div label {
+	display: block;
+}
