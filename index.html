@@ -19,7 +19,7 @@
 			</div>
 			<div class="size-div">
 				<label for="size">Pen Size</label>
-				<input type="range" id="size" min="1" max="20">
+				<input type="range" id="size" min="1" max="50" value="10">
 			</div>
 		</div>
 		<div>
@@ -27,10 +27,11 @@
 			<input type="number" id="width" style="width:100px;">
 			<label for="height">Height: </label>
 			<input type="number" id="height" style="width:100px;">
-			<button onclick="resize()">Resize</button>
+			<button onclick="resize(null,null)">Resize</button>
 		</div>
 		<div>
 			<button onclick="loadImageFile()">Load File</button>
+			<button onclick="saveImageFile()">Save File</button>
 		</div>
 	</body>
 </html>
