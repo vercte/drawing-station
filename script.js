@@ -70,19 +70,35 @@ function addURLParam(url, param, value){
     return parser.href;
 }
 
-function resize() {
-	const widthOpt = document.getElementById("width");
-	const heightOpt = document.getElementById("height");
-	if (widthOpt.value < 1) {
-		widthOpt.value = 32
-	}
-	if (heightOpt.value < 1) {
-		heightOpt.value = 32
+function resize(width, height) {
+	var canvas = document.getElementById("drawing-canvas");
+	if (width || height) {
+		if (width < 1) {
+			width = 32;
+		}
+		if (height < 1) {
+			height = 32;
+		};
+	} else {
+		var widthOpt = document.getElementById("width");
+		var heightOpt = document.getElementById("width");
+		width = Number(widthOpt.value);
+		height = Number(heightOpt.value);
+		if (width < 1) {
+			width = 32;
+		}
+		if (height < 1) {
+			height = 32;
+		}
 	}
 	var url = location.href;
-	url = addURLParam(url,'width',Math.floor(widthOpt.value));
-	url = addURLParam(url,'height',Math.floor(heightOpt.value));
-	location.href = url
+	url = addURLParam(url,'width',Math.floor(width));
+	url = addURLParam(url,'height',Math.floor(height));
+	
+	canvas.width = width;
+	canvas.height = height;
+	
+	history.pushState(null, document.title, url);
 };
 
 function loadImageFile() {
@@ -108,7 +124,8 @@ function loadImageFile() {
 			finalImage.src = imgContent
 			
 			finalImage.addEventListener("load", e => {
-      		ctx.drawImage(finalImage, 0, 0	);
+				resize(finalImage.width, finalImage.height);
+      		ctx.drawImage(finalImage, 0, 0);
 			});
    	}
 	}
