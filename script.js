@@ -81,7 +81,7 @@ function resize(width, height) {
 		};
 	} else {
 		var widthOpt = document.getElementById("width");
-		var heightOpt = document.getElementById("width");
+		var heightOpt = document.getElementById("height");
 		width = Number(widthOpt.value);
 		height = Number(heightOpt.value);
 		if (width < 1) {
