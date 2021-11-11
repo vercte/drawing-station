@@ -1,12 +1,33 @@
 body {
 	font-family: sans-serif;
-	margin: 20px;
+	margin: 10px;
+}
+
+button, input {
+	cursor: pointer;
 }
 
 #drawing-canvas {
-	border: 2px black solid;
+	border: 2px black dashed;
 	cursor: crosshair;
 	image-rendering: pixelated;
+	margin-left: 185px;
+	margin-right: 10px;
+}
+
+#tool-div {
+	position: fixed;
+	top: 0px;
+	left: 0px;
+	bottom: 0px;
+	width: 165px;
+	padding: 10px 10px;
+	background-color: rgba(50,50,50,0.9);
+	color: white;
+}
+
+#resize-button {
+	margin-top: 10px;
 }
 
 .eraser-div {
