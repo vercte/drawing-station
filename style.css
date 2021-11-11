@@ -30,6 +30,13 @@ button, input {
 	margin-top: 10px;
 }
 
+#info-div {
+	position: fixed;
+	right: 5px;
+	bottom: 5px;
+	font-size: 13px;
+}
+
 .eraser-div {
 	display: inline-block;
 	height: 50px;
