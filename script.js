@@ -3,10 +3,16 @@ const URLparams = new URLSearchParams(queryString);
 var mouseDown = 0;
 var edited = 1;
 
+const version = "v0.2"
+
 function load() {
 	const canvas = document.getElementById("drawing-canvas");
 	const widthDisplay = document.getElementById("width");
 	const heightDisplay = document.getElementById("height");
+	const versionDisplay = document.getElementById("version");
+	
+	versionDisplay.innerHTML = version;
+	
 	document.body.onmousedown = function() { 
 		mouseDown = 1
 	}
