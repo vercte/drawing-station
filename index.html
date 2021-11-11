@@ -8,7 +8,8 @@
 	</head>
 	<body onload="draw()">
 		<div><canvas id="drawing-canvas" width="800" height="600"></canvas></div>
-		<div>
+		
+		<div id="tool-div"><div>
 			<div class="color-div">
 				<label for="color">Color</label>
 				<input type="color" id="color">
@@ -22,16 +23,21 @@
 				<input type="range" id="size" min="1" max="50" value="10">
 			</div>
 		</div>
-		<div>
-			<label for="width">Width: </label>
-			<input type="number" id="width" style="width:100px;">
-			<label for="height">Height: </label>
-			<input type="number" id="height" style="width:100px;">
-			<button onclick="resize(null,null)">Resize</button>
-		</div>
-		<div>
+		<div style="margin-top: 15px;">
 			<button onclick="loadImageFile()">Load File</button>
 			<button onclick="saveImageFile()">Save File</button>
+		</div>
+		<div style="margin-top: 30px;">
+			<button id="reset-drawing" onclick="resetDrawing();">RESET DRAWING</button>
+		</div>
+		<div style="margin-top: 15px;">
+		
+			<div><label for="width">Width: </label>
+			<input type="number" id="width" style="width:100px;"></div>
+			<div style="margin-top: 10px;"><label for="height">Height: </label>
+			<input type="number" id="height" style="width:100px;"></div>
+			<button onclick="resize(null,null)" id="resize-button">Resize (RESETS DRAWING)</button>
+		</div> 
 		</div>
 	</body>
 </html>
