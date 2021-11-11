@@ -1,6 +1,8 @@
 const queryString = window.location.search;
 const URLparams = new URLSearchParams(queryString);
 var mouseDown = 0;
+var edited = 1;
+
 function load() {
 	const canvas = document.getElementById("drawing-canvas");
 	const widthDisplay = document.getElementById("width");
@@ -11,6 +13,13 @@ function load() {
 	document.body.onmouseup = function() {
 		mouseDown = 0
 	}
+	
+	window.onbeforeunload = function() {
+		if (edited === 0) {
+   		return "Be careful! You could lose your beautiful artwork.";
+		}
+	};
+	
 	if (URLparams.get("width")) {
 		canvas.width = URLparams.get("width");
 		widthDisplay.value = URLparams.get("width")
@@ -23,6 +32,10 @@ function load() {
 }
 
 function clickEvent(e) {
+	if (edited === 1) {
+		edited = 0;
+	};
+	
 	var canvas = document.getElementById("drawing-canvas");
 	var ctx = canvas.getContext("2d");
 	var sizeRange = document.getElementById("size");
