@@ -3,7 +3,7 @@ const URLparams = new URLSearchParams(queryString);
 var mouseDown = 0;
 var edited = 1;
 
-const version = "v0.2"
+const version = "v0.2a"
 
 function load() {
 	const canvas = document.getElementById("drawing-canvas");
@@ -44,9 +44,21 @@ function clickEvent(e) {
 	
 	var canvas = document.getElementById("drawing-canvas");
 	var ctx = canvas.getContext("2d");
+	
 	var sizeRange = document.getElementById("size");
 	var colorDropdown = document.getElementById("color");
 	var eraserOption = document.getElementById("eraser");
+	
+	if (eraserOption.checked) {
+		if (canvas.className = "normal-drawing") {
+			canvas.className = "eraser-drawing"
+		}
+	} else {
+		if (canvas.className = "eraser-drawing") {
+			canvas.className = "normal-drawing"
+		}
+	}
+	
 	penSize = sizeRange.value
 	// e = Mouse click event.
 	var rect = e.target.getBoundingClientRect();
@@ -55,9 +67,15 @@ function clickEvent(e) {
 	if (mouseDown) {
 		ctx.fillStyle = colorDropdown.value;
 		if (!(eraserOption.checked)) {
-			ctx.fillRect(x - penSize/2 , y - penSize/2, penSize, penSize);
+			ctx.globalCompositeOperation = 'source-over';
+			ctx.beginPath();
+			ctx.ellipse(x, y, penSize, penSize, Math.PI / 4, 0, 2 * Math.PI);
+			ctx.fill();
 		} else {
-			ctx.clearRect(x - penSize/2, y-penSize/2, penSize, penSize);
+			ctx.globalCompositeOperation = 'destination-out';
+			ctx.beginPath();
+			ctx.ellipse(x, y, penSize, penSize, Math.PI / 4, 0, 2 * Math.PI);
+			ctx.fill();
 		};
 	};
 }
@@ -68,6 +86,7 @@ function draw() {
 	var canvas = document.getElementById("drawing-canvas");
 	var ctx = canvas.getContext("2d");
 	canvas.addEventListener('mousemove', clickEvent);
+	canvas.addEventListener('click', clickEvent);
 };
 
 function addURLParam(url, param, value){
