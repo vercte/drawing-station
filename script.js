@@ -3,7 +3,7 @@ const URLparams = new URLSearchParams(queryString);
 var mouseDown = 0;
 var edited = 1;
 
-const version = "v0.2a"
+const version = "v0.21"
 
 function load() {
 	const canvas = document.getElementById("drawing-canvas");
