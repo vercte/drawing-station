@@ -5,6 +5,31 @@ var edited = 1;
 
 const version = "v0.21"
 
+class popup {
+	constructor(title, innerHTML) {
+		this.titleText = title;
+		this.innerContent = innerHTML;
+		
+		this.displayDiv = document.createElement("div");
+		this.displayDiv.className = "popup";
+		
+		this.displayTitle = document.createElement("div");
+		this.displayTitle.className = "popup-title";
+		this.displayTitle.innerText = title;
+		
+		this.displayContent = document.createElement("div");
+		this.displayContent.className = "popup-content";
+		this.displayContent.innerHTML = this.innerContent;
+		
+		this.displayDiv.append(this.displayTitle);
+		this.displayDiv.append(this.displayContent);
+		
+		this.appendTo = function(elementAp) {
+			elementAp.append(this.displayDiv);
+		}
+	};
+};
+
 function load() {
 	const canvas = document.getElementById("drawing-canvas");
 	const widthDisplay = document.getElementById("width");
@@ -13,12 +38,12 @@ function load() {
 	
 	versionDisplay.innerHTML = version;
 	
-	document.body.onmousedown = function() { 
+	document.addEventListener("pointerdown", function() { 
 		mouseDown = 1
-	}
-	document.body.onmouseup = function() {
+	})
+	document.addEventListener("pointerup",function() { 
 		mouseDown = 0
-	}
+	})
 	
 	window.onbeforeunload = function() {
 		if (edited === 0) {
@@ -58,13 +83,11 @@ function clickEvent(e) {
 			canvas.className = "normal-drawing"
 		}
 	}
-	
-	penSize = sizeRange.value
-	// e = Mouse click event.
+	var penSize = sizeRange.value;
 	var rect = e.target.getBoundingClientRect();
 	var x = e.clientX - rect.left; //x position within the element.
 	var y = e.clientY - rect.top;  //y position within the element.
-	if (mouseDown) {
+	if (mouseDown || e.type === "pointerdown") {
 		ctx.fillStyle = colorDropdown.value;
 		if (!(eraserOption.checked)) {
 			ctx.globalCompositeOperation = 'source-over';
@@ -85,8 +108,9 @@ function draw() {
 	
 	var canvas = document.getElementById("drawing-canvas");
 	var ctx = canvas.getContext("2d");
-	canvas.addEventListener('mousemove', clickEvent);
-	canvas.addEventListener('click', clickEvent);
+	canvas.addEventListener('pointermove', clickEvent);
+	canvas.addEventListener('pointerdown', clickEvent);
+	canvas.addEventListener('contextmenu', function(e){e.preventDefault});
 };
 
 function addURLParam(url, param, value){
