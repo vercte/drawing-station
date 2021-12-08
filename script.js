@@ -103,6 +103,33 @@ function clickEvent(e) {
 	};
 }
 
+function keys(e) {
+	let eraserOption = document.getElementById("eraser");
+	if (e.key === "m" || e.which === 77) {
+		if (eraserOption.checked) {
+			eraserOption.checked = false;
+		} else {
+			eraserOption.checked = true;
+		}
+	}
+	if (e.key === "." || e.which === 190) {
+		let sizeRange = document.getElementById("size");
+		let size = Number(sizeRange.value);
+		let maxSize = Number(sizeRange.max);
+		if (size < maxSize) {
+			sizeRange.value = size + 1;
+		}
+	}
+	if (e.key === "," || e.which === 188) {
+		let sizeRange = document.getElementById("size");
+		let size = Number(sizeRange.value);
+		let minSize = Number(sizeRange.min);
+		if (size > minSize) {
+			sizeRange.value = size - 1;
+		}
+	}
+}
+
 function draw() {
 	load();
 	
@@ -110,7 +137,8 @@ function draw() {
 	var ctx = canvas.getContext("2d");
 	canvas.addEventListener('pointermove', clickEvent);
 	canvas.addEventListener('pointerdown', clickEvent);
-	canvas.addEventListener('contextmenu', function(e){e.preventDefault});
+	canvas.addEventListener('contextmenu', e => e.preventDefault());
+	document.addEventListener('keydown', keys);
 };
 
 function addURLParam(url, param, value){
@@ -178,7 +206,7 @@ function loadImageFile() {
 	var ctx = canvas.getContext("2d");
 	
 	input.type = 'file';
-	input.accept = "image/png, image/jpeg";
+	input.accept = "image/png, image/jpeg image/gif";
 	input.click();
 	
 	input.onchange = e => { 

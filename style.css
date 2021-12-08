@@ -5,8 +5,12 @@ body {
 
 button, input {
 	cursor: pointer;
-	border: darkgray solid 1px;
-	border-radius: 3px;
+	border: gray solid 1px;
+}
+
+button:focus-visible, input:focus-visible {
+	border: black solid 1px;
+	outline: 1px black solid;
 }
 
 button:hover {
@@ -60,8 +64,9 @@ button:hover {
 	bottom: 0px;
 	width: 165px;
 	padding: 10px 10px;
-	background-color: rgba(50,50,50,0.9);
-	color: white;
+	background-color: rgba(240,240,240,0.8);
+	border-right: 2px grey solid	;
+	color: black;
 }
 
 #resize-button {
