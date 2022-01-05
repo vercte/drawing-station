@@ -98,6 +98,7 @@ function draw(e) {
 function toggleDraw(value) {drawing = value;}
 
 function loaded() {	
+	console.log("hi");
 	let page = get("#loading-page");
 	page.className = "loaded"
 	setTimeout(function(){page.remove()}, 1500);
@@ -140,4 +141,8 @@ function addTools() {
 
 addTools();
 
-document.addEventListener("load", loaded)
+document.addEventListener("readystatechange", function(e){
+	if (document.readyState = "complete") {
+		loaded();
+	}
+})
