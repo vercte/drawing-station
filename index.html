@@ -1,47 +1,13 @@
 <!DOCTYPE html>
 <html>
 	<head>
-		<script src="script.js"></script>
+		<script src="script.js" defer></script>
+		<link rel="preload" href="logo.png" as="image" type="image/png">
+		<link rel="preload" href="style.css" as="style" type="text/css">
 		<link rel="stylesheet" href="style.css">
-		<link rel="icon" href="favicon.png">
-		<title>drawing station</title>
-		<meta name="description" content="An open source drawing tool. Painfully simple!">
-		<meta name="keywords" content="Drawing, Station, Drawing Station, Paint, Art, Art Station, Paint Station">
-		<meta name="google-site-verification" content="aUfvOoGZpYIFHdWcElCtha9usokiTIyKdJc0A3IyEjU" />
 	</head>
-	<body onload="draw()">
-		<div><canvas id="drawing-canvas" width="800" height="600" class="normal-drawing"></canvas></div>
-		
-		<div id="tool-div"><div>
-			<div class="color-div">
-				<label for="color">Color</label>
-				<input type="color" id="color">
-			</div>
-			<div class="eraser-div">
-				<label for="eraser">Eraser?</label>
-				<input type="checkbox" id="eraser">
-			</div>
-			<div class="size-div">
-				<label for="size">Pen Size</label>
-				<input type="range" id="size" min="1" max="50" value="10">
-			</div>
+	<body>
+		<div id="loading-page">
 		</div>
-		<div style="margin-top: 15px;">
-			<button onclick="loadImageFile()">Load File</button>
-			<button onclick="saveImageFile()">Save File</button>
-		</div>
-		<div style="margin-top: 30px;">
-			<button id="reset-drawing" onclick="resetDrawing();">RESET DRAWING</button>
-		</div>
-		<div style="margin-top: 15px;">
-		
-			<div><label for="width">Width: </label>
-			<input type="number" id="width" style="width:100px;"></div>
-			<div style="margin-top: 10px;"><label for="height">Height: </label>
-			<input type="number" id="height" style="width:100px;"></div>
-			<button onclick="resize(null,null)" id="resize-button">Resize (RESETS DRAWING)</button>
-		</div> 
-		</div>
-		<div id="info-div">drawing station | <span id="version">version unknown</span> | <a href="https://github.com/lopste/drawing-station">Repository</a></div>
 	</body>
 </html>
