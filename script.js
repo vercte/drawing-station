@@ -140,4 +140,4 @@ function addTools() {
 
 addTools();
 
-loaded();
+document.addEventListener("load", loaded)
