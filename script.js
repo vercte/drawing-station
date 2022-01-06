@@ -37,7 +37,7 @@ class tools {
 	}
 	
 	static pen = new tools("pen", 1);
-	static eraser = new tools("eraser", 1);
+	static eraser = new tools("eraser", 2);
 }
 
 const mouseInfo = {
@@ -49,10 +49,15 @@ const mouseInfo = {
 
 var currentTool = tools.pen;
 var drawing = false;
-var penColor = "#000000";
+var penInfo = {
+	"color": "#000",
+	"size": 20
+};
 
 const toolFunctions = {
 	"pen": function(x,y,size,fill) {
+		ctx.beginPath();
+		ctx.globalCompositeOperation = "source-over";
 		ctx.strokeStyle = fill;
 		ctx.lineCap = "round";
 		ctx.lineWidth = size;
@@ -61,6 +66,7 @@ const toolFunctions = {
 		ctx.stroke();
 	},
 	"eraser": function(x,y,size) {
+		ctx.beginPath();
 		ctx.globalCompositeOperation = "destination-out";
 		ctx.lineCap = "round";
 		ctx.lineWidth = size;
@@ -74,16 +80,15 @@ function draw(e) {
 	if (e.type == "pointerdown") {
 		if (mouseInfo.lastpos.x == null) {mouseInfo.lastpos.x = e.offsetX;}
 		if (mouseInfo.lastpos.y == null) {mouseInfo.lastpos.y = e.offsetY;}
-		ctx.beginPath()
 	}
 	if (drawing || e.type == "pointerdown") {
 		let pos = {"x":e.offsetX,"y":e.offsetY};
-		switch (currentTool) {
+		switch(currentTool) {
 			case tools.pen:
-				toolFunctions.pen(pos.x,pos.y,20,penColor);
+				toolFunctions.pen(pos.x,pos.y,penInfo.size,penInfo.color);
 				break;
 			case tools.eraser:
-				toolFunctions.eraser(pos.x,pos.y,20);
+				toolFunctions.eraser(pos.x,pos.y,penInfo.size);
 				break;
 			default:
 				break;
@@ -95,10 +100,7 @@ function draw(e) {
 	}
 }
 
-function toggleDraw(value) {drawing = value;}
-
-function loaded() {	
-	console.log("hi");
+function loaded() {
 	let page = get("#loading-page");
 	page.className = "loaded"
 	setTimeout(function(){page.remove()}, 1500);
@@ -106,12 +108,14 @@ function loaded() {
 	get("canvas").addEventListener("pointerdown",draw);
 	get("canvas").addEventListener("pointermove",draw);
 	
-	get("canvas").addEventListener("pointerdown",function(){toggleDraw(true)});
-	get("canvas").addEventListener("pointerup",function(){
-		toggleDraw(false);
+	get("canvas").addEventListener("pointerdown",function(){drawing = true;});
+	document.addEventListener("pointerup",function(){
+		drawing = false;
 		mouseInfo.lastpos.x = null;
 		mouseInfo.lastpos.y = null;
 	});
+	
+	get("title").innerHTML = "Drawing Station";
 	
 	document.addEventListener("keydown", keybind);
 	document.addEventListener("keydown", shortcuts);
@@ -135,8 +139,19 @@ function addTools() {
 	let color = document.createElement("button");
 	color.className = "tool";
 	color.id = "pen-info";
-	color.style = `background-color: ${penColor};`
+	color.style = `background-color: ${penInfo.color};`
 	get("#tool-bar").append(color)
+	
+	let penTool = document.createElement("button");
+	penTool.className = "tool pen";
+	penTool.setAttribute("onclick", "currentTool = tools.pen; this.setAttribute('active','');");
+	get("#tool-bar").append(penTool);
+	
+	let eraserTool = document.createElement("button");
+	eraserTool.innerText = "era"
+	eraserTool.className = "tool";
+	eraserTool.setAttribute("onclick", "currentTool = tools.eraser");
+	get("#tool-bar").append(eraserTool);
 }
 
 addTools();
