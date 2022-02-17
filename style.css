@@ -49,7 +49,7 @@ button:hover {
 	margin-left: 185px;
 	margin-right: 10px;
 	background: content-box fixed;
-	background-image: linear-gradient(315deg, rgba(0,0,0,0.1), transparent 50%), url(blankbackground.png);
+	background-image: linear-gradient(315deg, rgba(0,0,0,0.1), transparent 50%), url(STATIC/PNG/blankbackground.png);
 	transition: box-shadow 0.2s;
 } 
 #drawing-canvas:hover {box-shadow: 5px 5px 15px 0px rgba(100,100,100,1);}
@@ -81,8 +81,8 @@ button:hover {
 	text-shadow: 0px 0px 15px 5px rgba(255,255,255,1)
 }
 
-.normal-drawing {	cursor: url(drawcursor.png) 5 5, crosshair; }
-.eraser-drawing { cursor: url(erasercursor.png) 5 5, crosshair; }
+.normal-drawing {	cursor: url(STATIC/PNG/drawcursor.png) 5 5, crosshair; }
+.eraser-drawing { cursor: url(STATIC/PNG/erasercursor.png) 5 5, crosshair; }
 
 .eraser-div {
 	display: inline-block;
