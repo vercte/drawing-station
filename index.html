@@ -3,12 +3,34 @@
 	<head>
 		<title>Loading | Drawing Station</title>
 		<script src="script.js" defer></script>
-		<link rel="preload" href="logo.png" as="image" type="image/png">
 		<link rel="preload" href="style.css" as="style" type="text/css">
 		<link rel="stylesheet" href="style.css">
 	</head>
-	<body>
+	<body class="dark">
 		<div id="loading-page">
+			<noscript style="color: var(--text-color); font-size: 15pt;">
+				&nbsp;Oops! You need JavaScript enabled in your browser.
+			</noscript>
 		</div>
+		<template id="popup-template">
+			<div class="popup">
+			</div>
+			<div class="penInfo-popup">
+				<span class="block-text">Pen Color:</span>
+				<input type="color">
+				<span class="block-text">Pen Size:</span>
+				<input type="range" max="50" min="1">
+				<br> <br>
+				<button>Reset All</button>
+			</div>
+			<div class="importExport-popup">
+				<button class="save-button">Save</button><br>
+				<button class="load-button" style="margin-top: 0.5em;">Load</button>
+			</div>
+			<div class="canvasSettings-popup">
+				<button class="resize-button">Resize Canvas</button><br>
+				<button class="reset-button" style="margin-top: 0.5em;">Reset Canvas</button>
+			</div>
+		</template>
 	</body>
 </html>
