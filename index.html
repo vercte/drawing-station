@@ -1,7 +1,9 @@
 <!DOCTYPE html>
 <html>
 	<head>
-		<script src="script.js"></script>
+		<title>Loading | Drawing Station</title>
+		<script src="script.js" defer></script>
+		<link rel="preload" href="style.css" as="style" type="text/css">
 		<link rel="stylesheet" href="style.css">
 		<link rel="icon" href="STATIC/PNG/favicon.png">
 		<title>drawing station</title>
@@ -9,39 +11,31 @@
 		<meta name="keywords" content="Drawing, Station, Drawing Station, Paint, Art, Art Station, Paint Station">
 		<meta name="google-site-verification" content="aUfvOoGZpYIFHdWcElCtha9usokiTIyKdJc0A3IyEjU" />
 	</head>
-	<body onload="draw()">
-		<div><canvas id="drawing-canvas" width="800" height="600" class="normal-drawing"></canvas></div>
-		
-		<div id="tool-div"><div>
-			<div class="color-div">
-				<label for="color">Color</label>
-				<input type="color" id="color">
+	<body class="dark">
+		<div id="loading-page">
+			<noscript style="color: var(--text-color); font-size: 15pt;">
+				&nbsp;Oops! You need JavaScript enabled in your browser.
+			</noscript>
+		</div>
+		<template id="popup-template">
+			<div class="popup">
 			</div>
-			<div class="eraser-div">
-				<label for="eraser">Eraser?</label>
-				<input type="checkbox" id="eraser">
+			<div class="penInfo-popup">
+				<span class="block-text">Pen Color:</span>
+				<input type="color">
+				<span class="block-text">Pen Size:</span>
+				<input type="range" max="50" min="1">
+				<br> <br>
+				<button>Reset All</button>
 			</div>
-			<div class="size-div">
-				<label for="size">Pen Size</label>
-				<input type="range" id="size" min="1" max="50" value="10">
+			<div class="importExport-popup">
+				<button class="save-button">Save</button><br>
+				<button class="load-button" style="margin-top: 0.5em;">Load</button>
 			</div>
-		</div>
-		<div style="margin-top: 15px;">
-			<button onclick="loadImageFile()">Load File</button>
-			<button onclick="saveImageFile()">Save File</button>
-		</div>
-		<div style="margin-top: 30px;">
-			<button id="reset-drawing" onclick="resetDrawing();">RESET DRAWING</button>
-		</div>
-		<div style="margin-top: 15px;">
-		
-			<div><label for="width">Width: </label>
-			<input type="number" id="width" style="width:100px;"></div>
-			<div style="margin-top: 10px;"><label for="height">Height: </label>
-			<input type="number" id="height" style="width:100px;"></div>
-			<button onclick="resize(null,null)" id="resize-button">Resize (RESETS DRAWING)</button>
-		</div> 
-		</div>
-		<div id="info-div">drawing station | <span id="version">version unknown</span> | <a href="https://github.com/lopste/drawing-station">Repository</a></div>
+			<div class="canvasSettings-popup">
+				<button class="resize-button">Resize Canvas</button><br>
+				<button class="reset-button" style="margin-top: 0.5em;">Reset Canvas</button>
+			</div>
+		</template>
 	</body>
 </html>
