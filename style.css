@@ -27,7 +27,7 @@ body.dark {
 	--border: 2pt solid #5f5f5f;
 	--text-color: white;
 	--activated: 2pt solid white;
-	--checkers: url("darkcheckers.png");
+	--checkers: url("static/png/darkcheckers.png");
 	--toolbar-color: #333;
 	--tool-color: #353535;
 	--imprint-color: #2f2f2f;
@@ -38,7 +38,7 @@ body.light {
 	--border: 2pt solid #9f9f9f;
 	--text-color: black;
 	--activated: 2pt solid #2f2f2f;
-	--checkers: url("lightcheckers.png");
+	--checkers: url("static/png/lightcheckers.png");
 	--toolbar-color: #efefef;
 	--tool-color: #e9e9e9;
 	--imprint-color: #cfcfcf;
@@ -148,7 +148,7 @@ button:hover {
 }
 
 .pen::before {
-	content: url("pencil.png");
+	content: url("static/png/pencil.png");
 	width: 20pt;
 	height: 40pt;
 }
