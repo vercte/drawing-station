@@ -25,6 +25,7 @@
 body.dark {
 	--background: #2f2f2f;
 	--border: 2pt solid #5f5f5f;
+	--border-color: #5f5f5f;
 	--text-color: white;
 	--activated: 2pt solid white;
 	--checkers: url("static/png/darkcheckers.png");
@@ -36,6 +37,7 @@ body.dark {
 body.light {
 	--background: #fdfdfd;
 	--border: 2pt solid #9f9f9f;
+	--border-color: #9f9f9f;
 	--text-color: black;
 	--activated: 2pt solid #2f2f2f;
 	--checkers: url("static/png/lightcheckers.png");
@@ -58,17 +60,31 @@ body {
 }
 
 
-canvas {
+#main-canvas {
 	touch-action: none;
 	border-radius: 5pt;
 	border: var(--border);
 	background: var(--checkers) fixed content-box;
-	cursor: crosshair;
-	margin-top: 0.5em;
-	margin-left: calc(0.5em + 42pt);
+
+	position: absolute;
+	top: 0.5em;
+	left: calc(0.5em + 42pt);
+
 	margin-right: 1em;
-	margin-bottom: 1em;
 	
+	image-rendering: pixelated;
+}
+
+#display-canvas {
+	position: absolute;
+	top: 0.5em;
+	left: calc(0.5em + 42pt);
+
+
+	border: rgba(0,0,0,0) 2pt solid;
+	cursor: crosshair;
+	touch-action: none;	
+	border-radius: 5pt;
 	image-rendering: pixelated;
 }
 
@@ -104,6 +120,8 @@ button:hover {
 	background-color: var(--toolbar-color);
 	border-right: var(--border);
 	overflow: scroll;
+
+	box-shadow: rgba(0,0,0,0.5) 0 0 5pt;
 }
 
 #tool-bar::-webkit-scrollbar {
@@ -114,7 +132,7 @@ button:hover {
 	background-color: var(--tool-color);
 	
 	width: 20pt;
-	height: 40pt;
+	height: 20pt;
 	
 	padding: 0pt 0pt;
 	display: inline;
@@ -142,25 +160,34 @@ button:hover {
 	width: 20pt;
 }
 
+#pen-tool {
+	margin-top: 1em;
+}
+
 #import-export, #canvas-settings {
 	height: 20pt;
 	width: 20pt;
 }
 
-.pen::before {
-	content: url("static/png/pencil.png");
+#tools-divider {
 	width: 20pt;
-	height: 40pt;
+	height: 2pt;
+
+	border-radius: 1pt;
+
+	margin-bottom: 2pt;
+	margin-top: 2pt;
+
+	background-color: var(--border-color);
 }
 
 #loading-page {
 	position: fixed;
-	top: -1pt;
+	top: 0;
 	left: 0;
 	right: 0;
 	bottom: 0;
 	background-color: var(--background);
-	border: var(--border);
 	z-index: 100;
 	
 	display: flex;
@@ -187,6 +214,8 @@ button:hover {
 	border-radius: 2pt;
 	
 	padding: var(--padding);
+
+	box-shadow: rgba(0,0,0,0.5) 0 0 5pt;
 }
 
 .popup-destroy {
