@@ -633,3 +633,13 @@ document.addEventListener("readystatechange", function(e){
 		loaded();
 	}
 })
+
+//Changing themes
+function changeThemes() {
+	const theme = document.getElementsByTagName("body").className;
+        if (theme == "dark") {
+		document.getElementsByTagName("body").className = "light"
+	} else if (theme == "light") {
+		document.getElementsByTagName("body").className = "dark"
+	}
+}
