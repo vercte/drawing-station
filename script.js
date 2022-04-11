@@ -633,3 +633,14 @@ document.addEventListener("readystatechange", function(e){
 		loaded();
 	}
 })
+
+// Theme changer
+function toggleTheme() {
+ const element = document.querySelector('.body');
+ const theme = element.style.background;
+ if (theme == "#212121") {
+	 document.getElementsByTagName("body").style.background = "#dbdbdb"; //Cool hex, eh?
+ } else if (theme == "#dbdbdb") {
+	 document.getElementsByTagName("body").style.background = "#212121";
+ }
+}
