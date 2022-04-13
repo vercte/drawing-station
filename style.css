@@ -271,3 +271,11 @@ input[type="range"] {
 	margin-bottom: 0.1em;
 	margin-top: 0.2em;
 }
+
+#theme-switcher {
+	position: fixed;
+	right: 1em;
+	bottom: 1em;
+	
+	z-index: 201;
+}
