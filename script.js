@@ -633,3 +633,15 @@ document.addEventListener("readystatechange", function(e){
 		loaded();
 	}
 })
+
+//Changing themes
+function changeThemes() {
+	const theme = document.getElementsByTagName("body").className;
+        if (theme == "dark") {
+		document.getElementsByTagName("body").className = "light"
+		document.getElementById("theme-switcher").innerHTML = "Dark";
+	} else if (theme == "light") {
+		document.getElementsByTagName("body").className = "dark"
+		document.getElementById("theme-switcher").innerHTML = "Light";
+	}
+}
