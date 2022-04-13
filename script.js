@@ -248,6 +248,8 @@ function loaded() {
 	get("#display-canvas").addEventListener("pointerdown",draw);
 	get("#display-canvas").addEventListener("pointermove",draw);
 	
+	get("#theme-switcher").addEventListener("click", changeThemes);
+	
 	get("#display-canvas").addEventListener("pointerdown",() => {drawing = true;});
 	document.addEventListener("pointerup",() => {
 		if(drawing) {
