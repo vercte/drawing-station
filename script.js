@@ -638,12 +638,12 @@ document.addEventListener("readystatechange", function(e){
 
 //Changing themes
 function changeThemes() {
-	let theme = document.getElementsByTagName("body").className;
+	let theme = get("body").className;
         if (theme == "dark") {
-		document.getElementsByTagName("body").className = "light"
-		document.getElementById("theme-switcher").innerHTML = "Dark";
+		get("body").className = "light"
+		get("#theme-switcher").innerText = "Dark";
 	} else if (theme == "light") {
-		document.getElementsByTagName("body").className = "dark"
-		document.getElementById("theme-switcher").innerHTML = "Light";
+		get("body").className = "dark"
+		get("#theme-switcher").innerText = "Light";
 	}
 }
