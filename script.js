@@ -636,7 +636,7 @@ document.addEventListener("readystatechange", function(e){
 
 //Changing themes
 function changeThemes() {
-	const theme = document.getElementsByTagName("body").className;
+	let theme = document.getElementsByTagName("body").className;
         if (theme == "dark") {
 		document.getElementsByTagName("body").className = "light"
 		document.getElementById("theme-switcher").innerHTML = "Dark";
